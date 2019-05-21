@@ -68,7 +68,8 @@ module Awspec::Type
 
     def target_nat?(route, nat_gateway_id)
       # nat
-      route.nat_gateway_id == nat_gateway_id
+      ngw = find_nat_gateway(nat_gateway_id)
+      return true if ngw && ngw.nat_gateway_id == route.nat_gateway_id
     end
 
     def target_vpc_peering_connection?(route, vpc_peering_connection_id)
